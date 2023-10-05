@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Dashboard</title>
+  <!-- Include CSS and JavaScript libraries (e.g., Materialize, Handlebars) -->
+  <!-- Add any other necessary libraries here -->
+</head>
+<body>
+  <div class="row">
+    <h2>Welcome, <span id="user-name">{{userName}}</span>!</h2>
+    <p>Logged In: <span id="logged-in">{{logged_in}}</span></p>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col s12 m6">
+      <h3>Create a New Post:</h3>
+
+      <form class="new-post-form" data-user-id="{{user_id}}">
+        <div class="input-field">
+          <label for="post-title">Post Title:</label>
+          <input type="text" id="post-title" name="post-title" />
+        </div>
+        <div class="input-field">
+          <label for="post-description">Description:</label>
+          <textarea id="post-description" class="materialize-textarea post-description" name="post-description"></textarea>
+        </div>
+        <div class="input-field">
+          <button type="submit" class="btn waves-effect waves-light">Create</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col s12 m6">
+      <h3>Your Previous Posts:</h3>
+
+      <!-- Loop to display previous posts -->
+      {{#each blogPosts as |blogpost|}}
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <div class="input-field">
+              <input type="text" id="edit-title-{{blogpost.id}}" class="editable-title" data-post-id="{{blogpost.id}}" value="{{blogpost.title}}" />
+            </div>
+            <div class="input-field">
+              <textarea id="edit-description-{{blogpost.id}}" class="materialize-textarea editable-description" data-post-id="{{blogpost.id}}">{{blogpost.description}}</textarea>
+            </div>
+
+            <p>Posted on: {{blogpost.date_created}}</p>
+          </div>
+          <div class="card-action">
+            <button class="btn waves-effect waves-light edit-description" data-post-id="{{blogpost.id}}">Edit</button>
+            <button class="btn waves-effect waves-light red delete-post" data-post-id="{{blogpost.id}}">Delete</button>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Tech Blog</title>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">TechBlog</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          {{#if logged_in}}
+            <li><a href="/">Home</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <button class="no-button" id="logout">logout</button>
+          {{else}}
+            <li><a href="/login">Login</a></li>
+          {{/if}}
+        </ul>
+      </div>
+    </nav>
+    <!-- Render the sub layout -->
+    {{{body}}}
+    <footer>
+
+    </footer>
+
+    {{#if logged_in}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
+  </body>
+</html>

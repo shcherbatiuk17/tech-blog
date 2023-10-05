@@ -1,0 +1,72 @@
+{{#each blogPosts as |blogpost|}}
+  <div class="blog-post">
+    <h2>{{blogpost.title}}</h2>
+    <h4>Post: {{blogpost.description}}</h4>
+    <p>Posted by: {{blogpost.user.name}}</p>
+    <p>Date: {{blogpost.date_created}}</p>
+    <div class="comments blue">
+      {{#each blogpost.comments as |comment|}}
+        <div class="comment">
+          <h3>Comment: {{comment.comment}}</h3>
+          <p>Comment by: {{comment.user.name}}</p>
+          <p>Date: {{comment.date_created}}</p>
+        </div>
+      {{/each}}
+    </div>
+    {{!-- {{#if logged_in}} --}}
+    <div class="add-comment">
+      <textarea id="commentText-{{blogpost.id}}" placeholder="Add a comment"></textarea>
+      <button class="submit-comment" data-blogpost-id="{{blogpost.id}}" data-user-id="{{user_id}}">Submit Comment</button>
+    </div>
+    {{!-- {{/if}} --}}
+  </div>
+{{/each}}
+<script src="/js/home.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
